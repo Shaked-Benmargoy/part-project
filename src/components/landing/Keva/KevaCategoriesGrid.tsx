@@ -1,6 +1,5 @@
-import { Box, Stack, Typography } from "@mui/material";
+import {  Stack, Typography } from "@mui/material";
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
-import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
