@@ -33,13 +33,6 @@ export const listItemSx = {
   ...textSx,
   display: "block",
 };
-
-const placeholderContent = (title: string) => (
-  <Typography sx={textSx}>
-    כאן ייכנס המידע עבור "{title}"
-  </Typography>
-);
-
 export const miluimSections: MiluimSection[] = [
   {
     title: "",
