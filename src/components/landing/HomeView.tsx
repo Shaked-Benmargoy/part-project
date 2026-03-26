@@ -1,18 +1,19 @@
 import { Stack } from "@mui/material";
-import LandingLayout from "./LandingLayout";
-import HeroSection from "./HeroSection";
 import CategoriesGrid from "./CategoriesGrid";
 import FooterSection from "./FooterSection";
+import HeroSection from "./HeroSection";
+import LandingLayout from "./LandingLayout";
 
 type HomeViewProps = {
   onOpenKeva: () => void;
+  onOpenMiluim: () => void;
 };
 
-const HomeView = ({ onOpenKeva }: HomeViewProps) => {
+const HomeView = ({ onOpenKeva, onOpenMiluim }: HomeViewProps) => {
   return (
     <LandingLayout>
       <Stack
-      spacing={4}
+        spacing={4}
         sx={{
           minHeight: "100vh",
           px: 3,
@@ -21,7 +22,10 @@ const HomeView = ({ onOpenKeva }: HomeViewProps) => {
         }}
       >
         <HeroSection />
-        <CategoriesGrid onOpenKeva={onOpenKeva} />
+        <CategoriesGrid
+          onOpenKeva={onOpenKeva}
+          onOpenMiluim={onOpenMiluim}
+        />
         <FooterSection />
       </Stack>
     </LandingLayout>

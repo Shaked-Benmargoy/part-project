@@ -42,7 +42,7 @@ const listItemSx = {
 };
 
 const financialAidContent = (
-  <Stack spacing={2}>
+  <Stack spacing={1}>
     <Typography sx={textSx}>
       <Box component="span" sx={{ fontWeight: 700 }}>
         סיוע כלכלי
@@ -52,7 +52,7 @@ const financialAidContent = (
 
     <Typography sx={textSx}>איך מגישים את הבקשה?</Typography>
 
-    <Stack spacing={0.5}>
+    <Stack>
       <Typography sx={listItemSx}>• נכנסים לאתר 369</Typography>
       <Typography sx={listItemSx}>• לוחצים למטה על החיפוש</Typography>
       <Typography sx={listItemSx}>• לוחצים על ת״ש קבע</Typography>
@@ -61,7 +61,7 @@ const financialAidContent = (
 
     <Typography sx={textSx}>דגשים חשובים:</Typography>
 
-    <Stack spacing={0.5}>
+    <Stack>
       <Typography sx={listItemSx}>
         • יש לוודא שכלל הקבצים עדכניים על מנת למנוע דרישות אישורים
       </Typography>
@@ -75,7 +75,7 @@ const financialAidContent = (
 
     <Typography sx={textSx}>מסמכים נדרשים:</Typography>
 
-    <Stack spacing={0.5}>
+    <Stack>
       <Typography sx={listItemSx}>• 3 חודשים עו״ש</Typography>
       <Typography sx={listItemSx}>• 3 חודשים פירוט אשראי</Typography>
       <Typography sx={listItemSx}>• הלוואות</Typography>
@@ -85,7 +85,7 @@ const financialAidContent = (
     </Stack>
 
     <Link
-      href="#"
+      href="https://mofet-frontend.wiz.digital.idf.il/m/NYZ43QF6QH"
       underline="none"
       sx={{
         color: "#6EA3FF",
@@ -163,14 +163,20 @@ content: (
       target="_blank"
       rel="noreferrer"
       underline="none"
-      sx={{
+     sx={{
         color: "#6EA3FF",
-        fontSize: { xs: "1rem", md: "1.1rem" },
-        fontWeight: 600,
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
         width: "fit-content",
       }}
     >
       לצפייה באיגרת הרמטכ״ל
+    <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
     </Link>
 
     <Typography sx={textSx}>
@@ -238,12 +244,20 @@ content: (
         rel="noreferrer"
         underline="none"
         sx={{
-          color: "#6EA3FF",
-          fontSize: { xs: "1rem", md: "1.1rem" },
-          fontWeight: 600,
-        }}
+        color: "#6EA3FF",
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
+        width: "fit-content",
+      }}
       >
-למדיניות באתר בית של קבע </Link>
+למדיניות באתר בית של קבע 
+ <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
+</Link>
   </Stack>
 ),      },
   {title:"סיוע כלכלי פעימה ד׳",
@@ -284,13 +298,19 @@ content: (
     rel="noreferrer"
     underline="none"
     sx={{
-      color: "#6EA3FF",
-      fontSize: { xs: "1rem", md: "1.1rem" },
-      fontWeight: 600,
-      width: "fit-content",
-    }}
+        color: "#6EA3FF",
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
+        width: "fit-content",
+      }}
   >
     לפרטים נוספים ולהגשת בקשה
+ <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
   </Link>
 </Stack> ),},
       {
@@ -492,13 +512,19 @@ content: (
     rel="noreferrer"
     underline="none"
     sx={{
-      color: "#6EA3FF",
-      fontSize: { xs: "1rem", md: "1.1rem" },
-      fontWeight: 600,
-      width: "fit-content",
-    }}
+        color: "#6EA3FF",
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
+        width: "fit-content",
+      }}
   >
     לצפייה במסמך המדיניות
+  <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
   </Link>
 </Stack>
         ),      },
@@ -704,12 +730,18 @@ content: (
       underline="none"
       sx={{
         color: "#6EA3FF",
-        fontSize: { xs: "1rem", md: "1.1rem" },
-        fontWeight: 600,
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
         width: "fit-content",
       }}
     >
       להגשת בקשה
+    <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
     </Link>
     </Stack>
   </Stack>
@@ -752,12 +784,18 @@ content: (
       underline="none"
       sx={{
         color: "#6EA3FF",
-        fontSize: { xs: "1rem", md: "1.1rem" },
-        fontWeight: 600,
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
         width: "fit-content",
       }}
     >
       להגשת בקשה
+    <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
     </Link>
     </Stack>
   </Stack>
@@ -893,12 +931,18 @@ content: (
       underline="none"
       sx={{
         color: "#6EA3FF",
-        fontSize: { xs: "1rem", md: "1.1rem" },
-        fontWeight: 600,
+        fontSize: { xs: "1rem", md: "1.15rem" },
+        fontWeight: 700,
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
+        gap: 1,
+        mt: 1,
         width: "fit-content",
       }}
     >
       להרשמה – courses.bsmch.idf.il
+    <OpenInNewOutlinedIcon sx={{ fontSize: 22 }} />
     </Link>
   </Stack>
 ), },
