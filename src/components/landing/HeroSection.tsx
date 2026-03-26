@@ -1,19 +1,33 @@
 import { Box, Stack, Typography } from "@mui/material";
 import logo from "../../logos/logo.png";
+import footerLogo from "../../logos/footerLogo.png";
+
 const HeroSection = () => {
   return (
     <Stack alignItems="center" spacing={1.5} sx={{ mt: 2 }}>
-      <Box
-        component="img"
-        src={logo}
-        alt="logo"
-        sx={{
-          width: 140,
-          height: "auto",
-          objectFit: "contain",
-        }}
-      />
+      <Stack direction="row" alignItems="center" spacing={2}>
+  <Box
+    component="img"
+    src={footerLogo}
+    alt="footerLogo"
+    sx={{
+      width: 80,
+      height: "auto",
+      objectFit: "contain",
+    }}
+  />
 
+  <Box
+    component="img"
+    src={logo}
+    alt="logo"
+    sx={{
+      width: 100,
+      height: "auto",
+      objectFit: "contain",
+    }}
+  />
+</Stack>
       <Typography
         sx={{
           color: "#FFFFFF",

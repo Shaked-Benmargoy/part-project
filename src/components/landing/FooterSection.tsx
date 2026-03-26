@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import footerLogo from "../../logos/footerLogo.png";
+import logo2 from "../../logos/logo2.png";
 const FooterSection = () => {
   return (
     <Stack alignItems="center" spacing={2}>
@@ -13,15 +13,16 @@ const FooterSection = () => {
       >זמינים עבורכם! טייסת מנהלה תל נוף</Typography>
 
       <Box
-        component="img"
-        src={footerLogo}
-        alt="footer logo"
-        sx={{
-          width: 72,
-          height: 72,
-          objectFit: "contain",
-        }}
-      />
+  component="img"
+  src={logo2}
+  alt="logo2"
+  sx={{
+    width: 80,
+    height: 80,
+    borderRadius: "50%",
+    objectFit: "cover",
+  }}
+/>
     </Stack>
   );
 };
