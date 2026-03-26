@@ -1,7 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Stack, Typography,Button } from "@mui/material";
 import LandingLayout from "../LandingLayout";
 import KevaCategoriesGrid from "./KevaCategoriesGrid";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 type KevaViewProps = {
   onBack: () => void;
@@ -28,29 +28,26 @@ const KevaView = ({ onBack }: KevaViewProps) => {
           }}
         >
           <Box
+          sx={{
+            width: "100%",
+            maxWidth: "1040px",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Button
             onClick={onBack}
+            startIcon={<ArrowBackIcon sx={{ transform: "rotate(180deg)" }} />}
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              gap: 1,
               color: "#6EA3FF",
-              cursor: "pointer",
-              mb: 5,
+              fontSize: { xs: "1.2rem", md: "1.8rem" },
+              fontWeight: 800,
             }}
           >
-            <Typography
-              sx={{
-                fontSize: { xs: "1.5rem", md: "2rem" },
-                fontWeight: 700,
-                color: "#6EA3FF",
-              }}
-            >
-              חזרה לדף הראשי
-            </Typography>
+            חזרה לדף הראשי
+          </Button>
+        </Box>
 
-            <ArrowForwardIcon sx={{ fontSize: 34, color: "#6EA3FF" }} />
-          </Box>
 
           <Typography
             sx={{
