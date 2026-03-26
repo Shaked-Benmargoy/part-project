@@ -8,14 +8,33 @@ type LandingLayoutProps = {
 const LandingLayout = ({ children }: LandingLayoutProps) => {
   return (
     <Box
-      sx={{
-        minHeight: "100vh",
-        width: "100%",
-        backgroundColor: "#0B234D", 
-      }}
-    >
-      {children}
-    </Box>
+  sx={{
+    minHeight: "100vh",
+    width: "100%",
+    position: "relative",
+    backgroundImage: "url('/files/background.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}>
+      <Box
+    sx={{
+      position: "absolute",
+      inset: 0,
+      background:
+        "linear-gradient(rgba(9,41,89,0.75), rgba(9,41,89,0.95))",
+      zIndex: 0,
+    }}
+  />
+  <Box
+    sx={{
+      position: "relative",
+      zIndex: 1,
+    }}
+  >
+    {children}
+  </Box>
+</Box>
   );
 };
 

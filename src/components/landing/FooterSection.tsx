@@ -10,9 +10,7 @@ const FooterSection = () => {
           fontWeight: 700,
           textAlign: "center",
         }}
-      >
-        זמינים עבורכם! גרף כ״א קבע בח״א 8
-      </Typography>
+      >זמינים עבורכם! טייסת מנהלה תל נוף</Typography>
 
       <Box
         component="img"
