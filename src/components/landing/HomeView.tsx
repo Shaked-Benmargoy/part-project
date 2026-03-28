@@ -9,6 +9,8 @@ type HomeViewProps = {
   onOpenMiluim: () => void;
   onOpenSadir: () => void;
   onOpenMedical: () => void;
+  onOpenDental: () => void;
+  onOpenFood: () => void;
 };
 
 const HomeView = ({
@@ -16,6 +18,8 @@ const HomeView = ({
   onOpenMiluim,
   onOpenSadir,
   onOpenMedical,
+  onOpenDental,
+  onOpenFood
 }: HomeViewProps) => {
   return (
     <LandingLayout>
@@ -34,6 +38,8 @@ const HomeView = ({
           onOpenMiluim={onOpenMiluim}
           onOpenSadir={onOpenSadir}
           onOpenMedical={onOpenMedical}
+          onOpenDental={onOpenDental}
+          onOpenFood={onOpenFood}
         />
         <FooterSection />
       </Stack>
