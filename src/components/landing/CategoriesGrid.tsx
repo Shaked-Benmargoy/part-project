@@ -14,6 +14,7 @@ type CategoriesGridProps = {
   onOpenKeva: () => void;
   onOpenMiluim: () => void;
   onOpenSadir: () => void;
+  onOpenMedical: () => void;
 };
 
 const categories = [
@@ -59,6 +60,7 @@ const CategoriesGrid = ({
   onOpenKeva,
   onOpenMiluim,
   onOpenSadir,
+  onOpenMedical
 }: CategoriesGridProps) => {
   return (
     <Stack spacing={2} sx={{ width: "100%", maxWidth: "900px" }}>
@@ -74,6 +76,8 @@ const CategoriesGrid = ({
     ? onOpenMiluim
     : category.title === "משרתים בסדיר"
     ? onOpenSadir
+    : category.title == "שירותי רפואה"
+    ? onOpenMedical
     : undefined
 }
         />

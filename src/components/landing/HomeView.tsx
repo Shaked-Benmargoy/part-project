@@ -1,16 +1,23 @@
 import { Stack } from "@mui/material";
+import LandingLayout from "./LandingLayout";
+import HeroSection from "./HeroSection";
 import CategoriesGrid from "./CategoriesGrid";
 import FooterSection from "./FooterSection";
-import HeroSection from "./HeroSection";
-import LandingLayout from "./LandingLayout";
 
 type HomeViewProps = {
   onOpenKeva: () => void;
   onOpenMiluim: () => void;
   onOpenSadir: () => void;
+  onOpenMedical: () => void;
 };
 
-const HomeView = ({ onOpenKeva, onOpenMiluim, onOpenSadir }: HomeViewProps) => {  return (
+const HomeView = ({
+  onOpenKeva,
+  onOpenMiluim,
+  onOpenSadir,
+  onOpenMedical,
+}: HomeViewProps) => {
+  return (
     <LandingLayout>
       <Stack
         spacing={4}
@@ -22,11 +29,12 @@ const HomeView = ({ onOpenKeva, onOpenMiluim, onOpenSadir }: HomeViewProps) => {
         }}
       >
         <HeroSection />
-       <CategoriesGrid
-        onOpenKeva={onOpenKeva}
-        onOpenMiluim={onOpenMiluim}
-        onOpenSadir={onOpenSadir}
-       />
+        <CategoriesGrid
+          onOpenKeva={onOpenKeva}
+          onOpenMiluim={onOpenMiluim}
+          onOpenSadir={onOpenSadir}
+          onOpenMedical={onOpenMedical}
+        />
         <FooterSection />
       </Stack>
     </LandingLayout>
