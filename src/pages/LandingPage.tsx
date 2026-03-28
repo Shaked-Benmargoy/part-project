@@ -6,10 +6,13 @@ import SadirView from "../components/landing/Sadir/SadirView";
 import MedicalView from "../components/landing/Medical/MedicalView";
 import DentalView from "../components/landing/Dental/DentalView";
 import FoodView from "../components/landing/Food/FoodView";
+import LogisticsView from "../components/landing/Logistics/LogisticsView";
+import PsychologyView from "../components/landing/Psychology/PsychologyView";
+import PersonalView from "../components/landing/Personal/PersonalView";
 
 const LandingPage = () => {
   const [currentView, setCurrentView] = useState<
-    "home" | "keva" | "miluim" | "sadir" | "medical" | "dental" | "food"
+    "home" | "keva" | "miluim" | "sadir" | "medical" | "dental" | "food" | "logistics" | "psychology" | "personal"
   >("home");
 
   if (currentView === "keva") {
@@ -35,6 +38,15 @@ const LandingPage = () => {
 if (currentView === "food") {
   return <FoodView onBack={() => setCurrentView("home")} />;
 }
+if (currentView === "logistics") {
+  return <LogisticsView onBack={() => setCurrentView("home")} />;
+}
+if (currentView === "psychology") {
+  return <PsychologyView onBack={() => setCurrentView("home")} />;
+}
+if (currentView === "personal") {
+  return <PersonalView onBack={() => setCurrentView("home")} />;
+}
 
   return (
     <HomeView
@@ -44,6 +56,9 @@ if (currentView === "food") {
       onOpenMedical={() => setCurrentView("medical")}
       onOpenDental={() => setCurrentView("dental")}
       onOpenFood={() => setCurrentView("food")}
+      onOpenLogistics={() => setCurrentView("logistics")}
+      onOpenPsychology={() => setCurrentView("psychology")}
+      onOpenPersonal={() => setCurrentView("personal")}
     />
   );
 };
