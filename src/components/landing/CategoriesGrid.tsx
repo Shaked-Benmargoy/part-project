@@ -86,7 +86,7 @@ const CategoriesGrid = ({
     ? onOpenMiluim
     : category.title === "משרתים בסדיר"
     ? onOpenSadir
-    : category.title == "שירותי רפואה"
+    : category.title === "שירותי רפואה"
     ? onOpenMedical
     : category.title === "רפואת שיניים"
     ? onOpenDental
