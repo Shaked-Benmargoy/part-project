@@ -7,10 +7,10 @@ import LandingLayout from "./LandingLayout";
 type HomeViewProps = {
   onOpenKeva: () => void;
   onOpenMiluim: () => void;
+  onOpenSadir: () => void;
 };
 
-const HomeView = ({ onOpenKeva, onOpenMiluim }: HomeViewProps) => {
-  return (
+const HomeView = ({ onOpenKeva, onOpenMiluim, onOpenSadir }: HomeViewProps) => {  return (
     <LandingLayout>
       <Stack
         spacing={4}
@@ -22,10 +22,11 @@ const HomeView = ({ onOpenKeva, onOpenMiluim }: HomeViewProps) => {
         }}
       >
         <HeroSection />
-        <CategoriesGrid
-          onOpenKeva={onOpenKeva}
-          onOpenMiluim={onOpenMiluim}
-        />
+       <CategoriesGrid
+        onOpenKeva={onOpenKeva}
+        onOpenMiluim={onOpenMiluim}
+        onOpenSadir={onOpenSadir}
+       />
         <FooterSection />
       </Stack>
     </LandingLayout>

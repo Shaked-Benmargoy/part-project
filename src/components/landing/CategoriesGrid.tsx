@@ -13,6 +13,7 @@ import CategoryCard from "./CategoryCard";
 type CategoriesGridProps = {
   onOpenKeva: () => void;
   onOpenMiluim: () => void;
+  onOpenSadir: () => void;
 };
 
 const categories = [
@@ -57,6 +58,7 @@ const categories = [
 const CategoriesGrid = ({
   onOpenKeva,
   onOpenMiluim,
+  onOpenSadir,
 }: CategoriesGridProps) => {
   return (
     <Stack spacing={2} sx={{ width: "100%", maxWidth: "900px" }}>
@@ -66,12 +68,14 @@ const CategoriesGrid = ({
           title={category.title}
           icon={category.icon}
           onClick={
-            category.title === "משרתי קבע"
-              ? onOpenKeva
-              : category.title === "משרתי מילואים"
-              ? onOpenMiluim
-              : undefined
-          }
+  category.title === "משרתי קבע"
+    ? onOpenKeva
+    : category.title === "משרתי מילואים"
+    ? onOpenMiluim
+    : category.title === "משרתים בסדיר"
+    ? onOpenSadir
+    : undefined
+}
         />
       ))}
     </Stack>
