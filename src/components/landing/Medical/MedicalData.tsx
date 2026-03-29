@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 
@@ -41,6 +41,28 @@ export const medicalSections: MedicalSection[] = [
             <Typography sx={{ ...textSx, mt: 1 }}>
               <strong>מקרה חירום:</strong> הקפצה דרך המושלם
             </Typography>
+          </Box>
+        ),
+      },
+      {
+        title: "רפואת נשים ",
+        icon: <LocalHospitalIcon />,
+        content: (
+          <Box>
+            <Typography sx={{ ...textSx, mt: 1 }}>
+              <strong>מוקד בריאות האישה זמין עבורכן בין השעות 8:00-20:00</strong> 
+            </Typography>
+
+            <Typography sx={{ ...textSx, mt: 1 }}>
+              <strong>וואטסאפ המרפאה:</strong> 050-3489698
+            </Typography>
+            <Button
+            href="/files/women-health.jpg"
+            target="_blank"
+            sx={{ mt: 1 }}
+            >
+  לפרטים נוספים במודעה
+          </Button>
           </Box>
         ),
       },

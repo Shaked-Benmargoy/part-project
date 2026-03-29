@@ -32,7 +32,7 @@ export const foodSections: FoodSection[] = [
             <Typography sx={{ ...textSx, mt: 1 }}>• חדר האוכל סגור לשיבה</Typography>
             <Typography sx={{ ...textSx, mt: 1 }}>• טייסות מבצעיות ונקודות שהוגדרו- בדחיפה</Typography>
             <Typography sx={{ ...textSx, mt: 1 }}>
-              • יתר היחידות- ע״ב משיכות מגף תזונה בחדר נגדים:
+              • יתר היחידות- ע״ב משיכות מגף תזונה בחדר אוכל נגדים:
             </Typography>
             <Typography sx={{ ...textSx, mt: 1 }}>
               • בהתאם לנהלי התברואה- יש להגיע עם ציוד מתאים חם/קר.

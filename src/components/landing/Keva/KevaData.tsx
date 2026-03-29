@@ -1,4 +1,4 @@
-import { Box, Link, Stack, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography,Button} from "@mui/material";
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
@@ -137,7 +137,7 @@ export const kevaSections: KevaSection[] = [
         <Typography sx={listItemSx}>• מוצרי חשמל</Typography>
         </Stack>
         <Typography sx={textSx}>
-      בקשות יועברו דרך שלישי היחידות אל משרד שכר ורווחה/מצב מנהלה.
+      בקשות יועברו דרך שלישי היחידות אל משרד שכר ורווחה/גף כוח אדם קבע תל נוף.
         </Typography>
    </Stack>
      ), },
@@ -189,20 +189,6 @@ content: (
 
     <Stack spacing={1}>
       <Link
-        href="https://go.idf.il/InstaBaitShelKeva"
-        target="_blank"
-        rel="noreferrer"
-        underline="none"
-        sx={{
-          color: "#6EA3FF",
-          fontSize: { xs: "1rem", md: "1.1rem" },
-          fontWeight: 600,
-        }}
-      >
-        בית של קבע באינסטגרם
-      </Link>
-
-      <Link
         href="https://go.idf.il/l5r2h2z8l9"
         target="_blank"
         rel="noreferrer"
@@ -213,8 +199,8 @@ content: (
           fontWeight: 600,
         }}
       >
-        אתר בית של קבע
-      </Link>
+שי הרמטכ״ל לפסח       </Link>
+
     </Stack>
   </Stack>
 ),      },
@@ -332,7 +318,7 @@ content: (
     </Typography>
 
     <Typography sx={textSx}>
-      ניתן לממש את התווים ברשתות: כרת | שופרסל | יינות ביתן | שפע ברכת השם | קרפור
+      ניתן לממש את התווים ברשתות: כוורת | שופרסל | יינות ביתן | שפע ברכת השם | קרפור
     </Typography>
   </Stack>
 ),      },
@@ -423,80 +409,6 @@ content: (
   </Stack>
 ),      },
       {
-        title: "משרתים שביתם נפגע",
-        icon: <HomeOutlinedIcon />,
-content: (
-  <Stack spacing={2}>
-    <Typography sx={textSx}>
-      מדיניות פרט עבור משרתים שביתם נפגע במבצע "שאגת הארי".
-    </Typography>
-
-    <Typography sx={textSx}>
-      מענה עבור אוכלוסיית החובה:
-    </Typography>
-
-    <Typography sx={textSx}>
-      1) חופשה מיוחדת – חייל חובה אשר ביתו נפגע, יוכל לממש חופשה מיוחדת ללא תנאי במימוש החופשות (צבורה ושנתית) באישור סא"ל. עד 30 יום זיון תחת חופשה מיוחדת אישית.
-    </Typography>
-
-    <Typography sx={textSx}>
-      2) מענה כלכלי:
-    </Typography>
-
-    <Stack spacing={0.5}>
-      <Typography sx={listItemSx}>
-        • כוכבים לחיילי חובה – חיילי חובה שפונו מביתם יקבלו תוספת של 500 כוכבים.
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • מענק לחייל חובה שביתו נפגע ופונה כתוצאה מכך – עבור חיילים אלו יינתן מענק בסך 2,000 ₪ באופן יזום על ידי מדור ת"ש חובה במופת.
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • סיוע כלכלי – חייל חובה אשר ביתו נפגע ונדרש בסיוע כלכלי בסמכות קצינת ת"ש חובה לבחון מענה כלכלי ללא אישורים עדכניים ועל בסיס היכרות עם מקרה החייל.
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • ועדת אלכ"א חריג – ועדות בראשות רע"ן ת"ש, ידונו בחיילי חובה אשר נקלעו למצוקה כלכלית חריגה בזמן מבצע "שאגת הארי", בדגש על חיילים אשר נפגע ביתם. הוועדות יתקיימו פעמיים בשבוע.
-      </Typography>
-    </Stack>
-
-    <Typography sx={textSx}>
-      מענה עבור אוכלוסיית הקבע:
-    </Typography>
-
-    <Typography sx={textSx}>
-      מפורט במסמך המצורף.
-    </Typography>
-
-    <Typography sx={textSx}>
-      דרכים ליצירת קשר:
-    </Typography>
-
-    <Stack spacing={0.5}>
-      <Typography sx={listItemSx}>
-        • מצב פרט חיל האוויר
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • חמ"ל משפחות: 052-9003785, 052-9004180
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • אדום: 502-3711
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • מרכז תע"צ – חמ"ל תע"ש: h9508ah9508taaz1@army.idf.il
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • מרכז מצבים טלפון ושליחת SMS: 3185*
-      </Typography>
-    </Stack>
-  </Stack>
-),      },
-      {
         title: "מדיניות מספר 10",
         icon: <DescriptionOutlinedIcon />,
         content:(
@@ -583,68 +495,13 @@ content: (
     <Typography sx={textSx}>
       בקשות יועברו דרך שלישי היחידות אל משרד שכר ורווחה/מצ"ב מנהלה.
     </Typography>
-  </Stack>
-),      },
-      {
-        title: "משפחות משרתי הקבע",
-        icon: <FavoriteBorderOutlinedIcon />,
-content: (
-  <Stack spacing={2}>
-    <Typography sx={textSx}>
-      ימי הפוגה למשפחות משרתי הקבע:
-    </Typography>
-
-    <Typography sx={textSx}>
-      משפחות משרתי הקבע הן העוגן התומך והרוח הגבית במיוחד בתקופה זו, היא שמאפשרת את המשך המאמץ המלחמתי.
-    </Typography>
-
-    <Typography sx={textSx}>
-      בתאריך ה- 15/03 החלו מופעים של ימי הפוגה בכפרי הנופש אולגה ואשקלון:
-    </Typography>
-
-    <Stack spacing={0.5}>
-      <Typography sx={listItemSx}>
-        • מחזור א' – ימים ראשון עד שלישי (15-17/03/2026)
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • מחזור ב' – ימים רביעי עד שישי (18-20/03/2026)
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • מחזורים ג' ו-ד' יתקיימו במהלך השבוע העוקב
-      </Typography>
-    </Stack>
-
-    <Typography sx={textSx}>
-      אוכלוסייה זכאית: משפחות לוחמות, הורים יחידנים, שני בני זוג משרתים בקבע/מילואים פעילים/מעצ"צ, משרתי קבע אשר נשואים לבני צה"ל יכולים להירשם עצמאית למול מוקד בדרך קבע.
-    </Typography>
-
-    <Typography sx={textSx}>
-      במסגרת ימי ההפוגה, יתקיימו פעילויות חווייתיות לילדים, מרחבי דשא ירוקים פתוחים, 3 ארוחות עשירות ביום, אפשרות ללינה במקום או הגעה יומית ללא לינה.
-    </Typography>
-
-    <Typography sx={textSx}>
-      דגשים:
-    </Typography>
-
-    <Stack spacing={0.5}>
-      <Typography sx={listItemSx}>
-        • השתתפות לילדים בליווי מבוגר בלבד
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • SMS נשלח באופן אישי למשרתים אשר נמנים עם האוכלוסיות הזכאיות
-      </Typography>
-
-      <Typography sx={listItemSx}>
-        • דיווח נוכחות בימים אלו – חופשה שנתית
-      </Typography>
-    </Stack>
-
-    <Typography sx={textSx}>
-      לכל שאלה יש לפנות למוקד "בדרך הקבע" שמספרו 052-9038053.
-    </Typography>
+    <Button
+      href="/files/flight-refund.jpg"
+      target="_blank"
+      sx={{ mt: 1, alignSelf: "flex-start" }}
+>
+  לפרטים נוספים במודעה
+    </Button>
   </Stack>
 ),      },
       {
@@ -653,6 +510,7 @@ content: (
         content: (
             <Stack>
                 <Typography sx={textSx}>מכון הקבע - עזרה נפשית ראשונית, ייעוץ טלפוני או בזום, הדרכת הורים או זוגית וטיפול ממוקד.</Typography>
+                <Typography sx={textSx}>טלפון- 052-9271493</Typography>
             </Stack>
         )
     },
@@ -660,9 +518,22 @@ content: (
         title: "בית של קבע",
         icon: <HomeOutlinedIcon />,
        content: (
-            <Stack>
-                <Typography sx={textSx}>מכון הקבע - עזרה נפשית ראשונית, ייעוץ טלפוני או בזום, הדרכת הורים או זוגית וטיפול ממוקד.</Typography>
+            <Stack spacing={1}>
+                <Typography sx={textSx}>בית של קבע – הפלטפורמה הרשמית למשרתי הקבע. מידע על הטבות, שירותים ועדכונים שוטפים.</Typography>
                  <Link
+        href="https://go.idf.il/InstaBaitShelKeva"
+        target="_blank"
+        rel="noreferrer"
+        underline="none"
+        sx={{
+          color: "#6EA3FF",
+          fontSize: { xs: "1rem", md: "1.1rem" },
+          fontWeight: 600,
+        }}
+      >
+         בית של קבע באינסטגרם
+      </Link>
+      <Link
         href="https://go.idf.il/l5r2h2z8l9"
         target="_blank"
         rel="noreferrer"
@@ -675,6 +546,21 @@ content: (
       >
         אתר בית של קבע
       </Link>
+            </Stack>
+        )
+      },
+      {
+        title: "כרטיס אשראי 'כרטיס שדה'",
+        icon: <HomeOutlinedIcon />,
+       content: (
+            <Stack spacing={1}>
+                             <Button
+            href="/files/card.jpg"
+            target="_blank"
+            variant="outlined"
+            sx={{ mt: 1 }}
+            >
+תכירו את כרטיס שדה          </Button>
             </Stack>
         )
       },
