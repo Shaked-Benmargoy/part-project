@@ -1,32 +1,18 @@
-import { Stack } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 import LandingLayout from "./LandingLayout";
 import HeroSection from "./HeroSection";
 import CategoriesGrid from "./CategoriesGrid";
 import FooterSection from "./FooterSection";
+import { Topic } from "../../services/sharepointApi";
 
 type HomeViewProps = {
-  onOpenKeva: () => void;
-  onOpenMiluim: () => void;
-  onOpenSadir: () => void;
-  onOpenMedical: () => void;
-  onOpenDental: () => void;
-  onOpenFood: () => void;
-  onOpenLogistics: () => void;
-  onOpenPsychology: () => void;
-  onOpenPersonal: () => void;
+  topics: Topic[];
+  loading: boolean;
+  error: string | null;
+  onOpenTopic: (topic: Topic) => void;
 };
 
-const HomeView = ({
-  onOpenKeva,
-  onOpenMiluim,
-  onOpenSadir,
-  onOpenMedical,
-  onOpenDental,
-  onOpenFood,
-  onOpenLogistics,
-  onOpenPsychology,
-  onOpenPersonal
-}: HomeViewProps) => {
+const HomeView = ({ topics, loading, error, onOpenTopic }: HomeViewProps) => {
   return (
     <LandingLayout>
       <Stack
@@ -39,17 +25,21 @@ const HomeView = ({
         }}
       >
         <HeroSection />
-        <CategoriesGrid
-          onOpenKeva={onOpenKeva}
-          onOpenMiluim={onOpenMiluim}
-          onOpenSadir={onOpenSadir}
-          onOpenMedical={onOpenMedical}
-          onOpenDental={onOpenDental}
-          onOpenFood={onOpenFood}
-          onOpenLogistics={onOpenLogistics}
-          onOpenPsychology={onOpenPsychology}
-          onOpenPersonal={onOpenPersonal}
-        />
+        {loading ? (
+          <CircularProgress sx={{ color: "#6EA3FF" }} />
+        ) : error ? (
+          <Typography
+            sx={{
+              color: "#ff6b6b",
+              fontSize: "1.2rem",
+              textAlign: "center",
+            }}
+          >
+            שגיאה בטעינת הנתונים. נסו לרענן את הדף.
+          </Typography>
+        ) : (
+          <CategoriesGrid topics={topics} onOpenTopic={onOpenTopic} />
+        )}
         <FooterSection />
       </Stack>
     </LandingLayout>
