@@ -12,7 +12,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
     minHeight: "100vh",
     width: "100%",
     position: "relative",
-    backgroundImage: "url('/files/background.jpg')",
+    backgroundImage: "https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/background.jpg?csf=1&web=1&e=DJNKbn",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

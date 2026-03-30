@@ -419,7 +419,7 @@ content: (
   </Typography>
 
   <Link
-    href="/files/policy10.pdf"
+    href="https://tikshuv.sharepoint.com/:b:/r/sites/baha8-minhala/Shared%20Documents/policy10.pdf?csf=1&web=1&e=aZnwyc"
     target="_blank"
     rel="noreferrer"
     underline="none"
@@ -496,7 +496,7 @@ content: (
       בקשות יועברו דרך שלישי היחידות אל משרד שכר ורווחה/מצ"ב מנהלה.
     </Typography>
     <Button
-      href="/files/flight-refund.jpg"
+      href="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/flight.jpg?csf=1&web=1&e=d2NNE1"
       target="_blank"
       sx={{ mt: 1, alignSelf: "flex-start" }}
 >

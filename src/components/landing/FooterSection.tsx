@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import logo2 from "../../logos/logo2.png";
 const FooterSection = () => {
   return (
     <Stack alignItems="center" spacing={2}>
@@ -14,7 +13,7 @@ const FooterSection = () => {
 
       <Box
   component="img"
-  src={logo2}
+  src="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/logo2.png?csf=1&web=1&e=qjtdwi"
   alt="logo2"
   sx={{
     width: 80,

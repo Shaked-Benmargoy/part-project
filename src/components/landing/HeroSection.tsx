@@ -1,6 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import logo from "../../logos/logo.png";
-import footerLogo from "../../logos/footerLogo.png";
 
 const HeroSection = () => {
   return (
@@ -8,8 +6,8 @@ const HeroSection = () => {
       <Stack direction="row" alignItems="center" spacing={2}>
   <Box
     component="img"
-    src={footerLogo}
-    alt="footerLogo"
+    src="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/footerLogo.png?csf=1&web=1&e=uW18Gd"
+    alt="footer"
     sx={{
       width: 80,
       height: "auto",
@@ -19,7 +17,7 @@ const HeroSection = () => {
 
   <Box
     component="img"
-    src={logo}
+    src="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/logo.png?csf=1&web=1&e=fmaIFo"
     alt="logo"
     sx={{
       width: 100,
