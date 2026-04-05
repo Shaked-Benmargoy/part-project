@@ -141,24 +141,70 @@ export const kevaSections: KevaSection[] = [
         </Typography>
    </Stack>
      ), },
-      {
-        title: 'שי הרמטכ"ל לפסח',
-        icon: <MilitaryTechOutlinedIcon />,
-content: (
-  <Stack spacing={2}>
-    <Typography sx={textSx}>
-      משרתות ומשרתי קבע יקרים,
-    </Typography>
+    {
+  title: 'שי מפקד חיל האוויר לפסח',
+  icon: <MilitaryTechOutlinedIcon />,
+  content: (
+    <Stack spacing={2} sx={{color:"#fff"}}>
+      <Typography>משרתים יקרים,</Typography>
+      <Typography>
+        אנו מתכבדים להעניק שובר שי מטעם מפקד חיל האוויר כאות הערכה על
+        עשייתכם ומסירותכם.
+      </Typography>
+      <Typography>
+        לברכה יש ללחוץ על הקישור הבא:
+      </Typography>
+      <Typography>
+        <Link
+          href="https://go.idf.il/https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/Blessing.jpg?csf=1&web=1&e=dfzxkh"
+          target="_blank"
+          rel="noopener"
+          underline="hover"
+        >
+לברכה יש ללחוץ על הקישור </Link>
+      </Typography>
+      <Typography>
+        לכל משרת קבע הופץ מסרון עם קוד לשובר.
+      </Typography>
+      <Typography>
+        זכאות לכלל משרתי הקבע.
+      </Typography>
+      <Typography>
+        קוד השובר: xxxxxxxxxx
+        <br />
+        סכום השובר: 300 ש"ח
+      </Typography>
+      <Typography>
+        לפרטי <strong>מימוש</strong> השובר, לתנאים ולכלל המידע, יש להיכנס לאתר
+        חברת אקסטרה:{' '}</Typography>
+        <Typography>
+        <Link
+          href="https://go.idf.il/forkeva"
+          target="_blank"
+          rel="noopener"
+          underline="hover"
+        >קישור לאתר אקסטרה </Link>
+      </Typography>
 
-    <Typography sx={textSx}>
+      <Typography>
+        ומי שלא מצליח שירשום פוט אקסטרה
+      </Typography>
+    </Stack>
+  ),},
+  {
+       title: 'שי הרמטכ"ל לפסח',
+       icon: <MilitaryTechOutlinedIcon />,
+       content: (
+       <Stack spacing={2}>
+       <Typography sx={textSx}>
+      משרתות ומשרתי קבע יקרים,</Typography>
+       <Typography sx={textSx}>
       הרמטכ״ל: כעמוד האש שהלך לפני מחנה ישראל ביציאתם ממצרים, כך גם אתם עומדים בחזית – חומת המגן של ישראל.
-    </Typography>
-
-    <Typography sx={textSx}>
+       </Typography>
+       <Typography sx={textSx}>
       מצורפת איגרת לרגל חג הפסח מטעם ראש המטה הכללי, רב-אלוף אייל זמיר:
-    </Typography>
-
-    <Link
+      </Typography>
+     <Link
       href="https://go.idf.il/e4n1v6v8i6"
       target="_blank"
       rel="noreferrer"
@@ -561,6 +607,13 @@ content: (
             sx={{ mt: 1 }}
             >
 תכירו את כרטיס שדה          </Button>
+ <Button
+    href="https://go.idf.il/files/55a25d63-b1be-4d7d-ac80-1445d3067e34.pdf"
+    target="_blank"
+    variant="outlined"
+  >
+    לכל הפרטים המלאים
+  </Button>
             </Stack>
         )
       },

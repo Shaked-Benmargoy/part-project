@@ -301,7 +301,7 @@ export const miluimSections: MiluimSection[] = [
         content: (
         <Stack>
          <Typography sx={textSx}>מגוייסים למילואים</Typography>
-         <Typography sx={textSx}>תוכנית המענקים וההטבות למשרתי ומשרתות המילואין ובני המשםחה.</Typography>
+         <Typography sx={textSx}>תוכנית המענקים וההטבות למשרתי ומשרתות המילואים ובני המשפחה.</Typography>
                  <Link
         href="https://www.miluim.idf.il/articles-list/מגוייסים-למילואים"
         target="_blank"

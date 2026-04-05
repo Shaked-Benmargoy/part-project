@@ -8,7 +8,7 @@ import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import PublicIcon from "@mui/icons-material/Public";
 import DescriptionIcon from "@mui/icons-material/Description";
-import { Typography, Box, Stack} from "@mui/material";
+import { Typography, Box, Stack,Button} from "@mui/material";
 import { listItemSx } from "../Miluim/MiluimData";
 
 export type SadirItem = {
@@ -162,18 +162,16 @@ export const sadirSections: SadirSection[] = [
       {
         title: "חופשות",
         icon: <BeachAccessIcon />,
-        content:(
-            <Stack>
-                <Typography sx={listItemSx}>• פדיון ימי חופשה של אנשי קבע- שולחת תמונה בנפרד.</Typography>
-                <Typography sx={listItemSx}>• ככלל- אין לבטל חופשות מיוחדות מטכליות (אבל,מחלה,אשפוז,פציעה ושמחות משפחתיות).</Typography>
-                <Typography sx={listItemSx}>• חיילים השוהים בחופשה בסמכות מפקד בדרגת אל״מ ומעלה בנסיבות מבצעיות בלבד על ביטול או קיצור החופשה.</Typography>
-                <Typography sx={listItemSx}>• מימוש חופשה שנתית- בשיקול מפקד בלבד.</Typography>
-                <Typography sx={listItemSx}>• שימו לב- דיווח ״כוננות בית״ אינו תחליף להזנת ״חופשה״!</Typography>
-                <Typography sx={listItemSx}>• חופשת שחרור- בסמכות מפקד בדרגת אל״מ ומעלה לבטל או לקצר חופשת שחרור.</Typography>
-
+        content: (
+            <Stack spacing={1}>
+            <Button
+            href="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/freedom.jpg?csf=1&web=1&e=spOG6z"
+            target="_blank"
+            variant="outlined"
+            sx={{ mt: 1 }}
+            >קישור לפירוט המלא</Button>
             </Stack>
-        ),
-      },
+        ), },
       {
         title: "חו״ל",
         icon: <PublicIcon />,

@@ -32,8 +32,9 @@ export const logisticsSections: LogisticsSection[] = [
         content: (
           <Box>
             <Typography sx={{ ...textSx, mt: 1 }}>
-              שעות פעילות 10:00-15:00
-            </Typography>
+            <Typography>שעות פעילות:</Typography>
+            א׳ - ה׳  16:00 - 08:00  
+            <Typography> יום ו׳ 12:00 - 08:00</Typography>            </Typography>
           </Box>
         ),
       },
@@ -43,7 +44,9 @@ export const logisticsSections: LogisticsSection[] = [
         content: (
           <Box>
             <Typography sx={{ ...textSx, mt: 1 }}>
-              שעות פעילות 10:00-15:00
+            <Typography>שעות פעילות:</Typography>
+            א׳ - ה׳  16:00 - 08:00  
+            <Typography> יום ו׳ 12:00 - 08:00</Typography>
             </Typography>
           </Box>
         ),
