@@ -8,6 +8,7 @@ type ExpandableInfoCardProps = {
   content: ReactNode;
   expanded: boolean;
   onChange: () => void;
+  actions?: ReactNode;
 };
 
 const ExpandableInfoCard = ({
@@ -16,6 +17,7 @@ const ExpandableInfoCard = ({
   content,
   expanded,
   onChange,
+  actions,
 }: ExpandableInfoCardProps) => {
   return (
     <Accordion
@@ -61,24 +63,33 @@ const ExpandableInfoCard = ({
             justifyContent: "space-between",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              minWidth: 28,
-              color: "#6EA3FF",
-              ml: 0,
-              "& svg": {
-                fontSize: 30,
-              },
-              ".Mui-expanded &": {
-                transform: "rotate(180deg)",
-              },
-              transition: "transform 0.2s ease",
-            }}
-          >
-            <KeyboardArrowDownIcon />
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                minWidth: 28,
+                color: "#6EA3FF",
+                "& svg": {
+                  fontSize: 30,
+                },
+                ".Mui-expanded &": {
+                  transform: "rotate(180deg)",
+                },
+                transition: "transform 0.2s ease",
+              }}
+            >
+              <KeyboardArrowDownIcon />
+            </Box>
+            {actions && (
+              <Box
+                onClick={(e) => e.stopPropagation()}
+                sx={{ display: "flex", alignItems: "center", gap: 0.5, ml: 0.5 }}
+              >
+                {actions}
+              </Box>
+            )}
           </Box>
 
           <Stack

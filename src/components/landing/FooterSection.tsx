@@ -13,7 +13,7 @@ const FooterSection = () => {
 
       <Box
   component="img"
-  src="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/logo2.png?csf=1&web=1&e=qjtdwi"
+  src="/sites/baha8-minhala/Shared%20Documents/logo2.png"
   alt="logo2"
   sx={{
     width: 80,

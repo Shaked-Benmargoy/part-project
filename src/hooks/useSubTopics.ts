@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { fetchSubTopics, SubTopic } from "../services/sharepointApi";
 
 interface UseSubTopicsResult {
   subTopics: SubTopic[];
   loading: boolean;
   error: string | null;
+  refetch: () => void;
 }
 
 export function useSubTopics(topicId: number): UseSubTopicsResult {
   const [subTopics, setSubTopics] = useState<SubTopic[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [refetchKey, setRefetchKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -32,7 +34,9 @@ export function useSubTopics(topicId: number): UseSubTopicsResult {
     return () => {
       cancelled = true;
     };
-  }, [topicId]);
+  }, [topicId, refetchKey]);
 
-  return { subTopics, loading, error };
+  const refetch = useCallback(() => setRefetchKey((k) => k + 1), []);
+
+  return { subTopics, loading, error, refetch };
 }

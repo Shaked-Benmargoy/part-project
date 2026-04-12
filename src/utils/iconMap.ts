@@ -98,6 +98,8 @@ const iconMap: Record<string, SvgIconComponent> = {
   OpenInNewOutlined,
 };
 
+export const ICON_NAMES: string[] = Object.keys(iconMap);
+
 export function getIcon(name: string): SvgIconComponent {
   return iconMap[name] || InfoOutlined;
 }

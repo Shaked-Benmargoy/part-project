@@ -6,7 +6,7 @@ const HeroSection = () => {
       <Stack direction="row" alignItems="center" spacing={2}>
   <Box
     component="img"
-    src="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/footerLogo.png?csf=1&web=1&e=uW18Gd"
+    src="/sites/baha8-minhala/Shared%20Documents/footerLogo.png"
     alt="footer"
     sx={{
       width: 80,
@@ -17,7 +17,7 @@ const HeroSection = () => {
 
   <Box
     component="img"
-    src="https://tikshuv.sharepoint.com/:i:/r/sites/baha8-minhala/Shared%20Documents/logo.png?csf=1&web=1&e=fmaIFo"
+    src="/sites/baha8-minhala/Shared%20Documents/logo.png"
     alt="logo"
     sx={{
       width: 100,
