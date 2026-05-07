@@ -3,14 +3,23 @@ import EditOutlined from "@mui/icons-material/EditOutlined";
 import CloseOutlined from "@mui/icons-material/CloseOutlined";
 import { useAdminContext } from "../../contexts/AdminContext";
 
-const EditModeToggle = () => {
+type EditModeToggleProps = {
+  onAttemptExit?: () => boolean;
+};
+
+const EditModeToggle = ({ onAttemptExit }: EditModeToggleProps = {}) => {
   const { isAdmin, editMode, toggleEditMode } = useAdminContext();
 
   if (!isAdmin) return null;
 
+  const handleClick = () => {
+    if (editMode && onAttemptExit && !onAttemptExit()) return;
+    toggleEditMode();
+  };
+
   return (
     <Button
-      onClick={toggleEditMode}
+      onClick={handleClick}
       startIcon={editMode ? <CloseOutlined /> : <EditOutlined />}
       sx={{
         color: editMode ? "#ff6b6b" : "#6EA3FF",

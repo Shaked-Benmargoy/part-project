@@ -3,6 +3,8 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/site-users";
+import "@pnp/sp/files";
+import "@pnp/sp/folders";
 import { SHAREPOINT_SITE_URL } from "../config";
 
 const sp = spfi().using(
@@ -13,6 +15,7 @@ export interface Topic {
   Id: number;
   Title: string;
   w2is: string; // Internal name for "Icon" column
+  Order?: number;
 }
 
 export interface SubTopic {
@@ -22,6 +25,7 @@ export interface SubTopic {
   topic_id: number;
   icon: string;
   link: string;
+  Order?: number;
 }
 
 // --- Read ---
@@ -29,15 +33,17 @@ export interface SubTopic {
 export async function fetchTopics(): Promise<Topic[]> {
   return sp.web.lists
     .getByTitle("Topics")
-    .items.select("Id", "Title", "w2is")
+    .items.select("Id", "Title", "w2is", "Order")
+    .orderBy("Order")
     .orderBy("Id")();
 }
 
 export async function fetchSubTopics(topicId: number): Promise<SubTopic[]> {
   return sp.web.lists
     .getByTitle("SubTopic")
-    .items.select("Id", "Title", "data", "topic_id", "icon", "link")
+    .items.select("Id", "Title", "data", "topic_id", "icon", "link", "Order")
     .filter(`topic_id eq ${topicId}`)
+    .orderBy("Order")
     .orderBy("Id")();
 }
 
@@ -54,11 +60,11 @@ export async function checkIsAdmin(): Promise<boolean> {
 
 // --- Topics CRUD ---
 
-export async function createTopic(data: { Title: string; w2is: string }): Promise<void> {
+export async function createTopic(data: { Title: string; w2is: string; Order?: number }): Promise<void> {
   await sp.web.lists.getByTitle("Topics").items.add(data);
 }
 
-export async function updateTopic(id: number, data: { Title: string; w2is: string }): Promise<void> {
+export async function updateTopic(id: number, data: { Title?: string; w2is?: string; Order?: number }): Promise<void> {
   await sp.web.lists.getByTitle("Topics").items.getById(id).update(data);
 }
 
@@ -69,17 +75,25 @@ export async function deleteTopic(id: number): Promise<void> {
 // --- SubTopics CRUD ---
 
 export async function createSubTopic(data: {
-  Title: string; data: string; topic_id: number; icon: string; link: string;
+  Title: string; data: string; topic_id: number; icon: string; link: string; Order?: number;
 }): Promise<void> {
   await sp.web.lists.getByTitle("SubTopic").items.add(data);
 }
 
 export async function updateSubTopic(id: number, data: {
-  Title: string; data: string; icon: string; link: string;
+  Title?: string; data?: string; icon?: string; link?: string; Order?: number;
 }): Promise<void> {
   await sp.web.lists.getByTitle("SubTopic").items.getById(id).update(data);
 }
 
 export async function deleteSubTopic(id: number): Promise<void> {
   await sp.web.lists.getByTitle("SubTopic").items.getById(id).delete();
+}
+
+// --- Logo upload ---
+
+export async function uploadLogo(filename: string, file: File): Promise<void> {
+  await sp.web
+    .getFolderByServerRelativePath("/sites/baha8-minhala/Shared Documents")
+    .files.addUsingPath(filename, file, { Overwrite: true });
 }

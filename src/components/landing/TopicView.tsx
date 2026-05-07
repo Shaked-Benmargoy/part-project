@@ -4,14 +4,31 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddOutlined from "@mui/icons-material/AddOutlined";
 import EditOutlined from "@mui/icons-material/EditOutlined";
 import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
+import {
+  DndContext,
+  PointerSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
+  closestCenter,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  sortableKeyboardCoordinates,
+} from "@dnd-kit/sortable";
 import LandingLayout from "./LandingLayout";
 import ExpandableInfoCard from "./ExpandableInfoCard";
 import SubTopicContent from "./SubTopicContent";
 import EditModeToggle from "../admin/EditModeToggle";
 import SubTopicDialog from "../admin/SubTopicDialog";
 import DeleteConfirmDialog from "../admin/DeleteConfirmDialog";
+import ReorderToolbar from "../admin/ReorderToolbar";
+import UnsavedChangesDialog from "../admin/UnsavedChangesDialog";
+import SortableSubTopicRow, { SubTopicDragHandle } from "../admin/SortableSubTopicRow";
 import { useSubTopics } from "../../hooks/useSubTopics";
 import { useAdminContext } from "../../contexts/AdminContext";
+import { useReorderable, ReorderUpdate } from "../../hooks/useReorderable";
 import { getIcon } from "../../utils/iconMap";
 import {
   SubTopic,
@@ -41,13 +58,34 @@ type TopicViewProps = {
 
 const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProps) => {
   const { subTopics, loading, error, refetch: refetchSubTopics } = useSubTopics(topicId);
-  const { editMode } = useAdminContext();
+  const { editMode, toggleEditMode } = useAdminContext();
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const [subTopicDialogOpen, setSubTopicDialogOpen] = useState(false);
   const [editingSubTopic, setEditingSubTopic] = useState<SubTopic | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deletingSubTopic, setDeletingSubTopic] = useState<SubTopic | null>(null);
+  const [unsavedDialogOpen, setUnsavedDialogOpen] = useState(false);
+  const [pendingExitAction, setPendingExitAction] = useState<"toggleEdit" | "back" | null>(null);
+
+  const saveSubTopicOrder = async (updates: ReorderUpdate[]) => {
+    await Promise.all(updates.map((u) => updateSubTopic(u.id, { Order: u.order })));
+    refetchSubTopics();
+  };
+
+  const {
+    orderedItems: orderedSubTopics,
+    isDirty,
+    saving,
+    onDragEnd,
+    save,
+    cancel,
+  } = useReorderable<SubTopic>(subTopics, saveSubTopicOrder);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
 
   const handleAddSubTopic = () => {
     setEditingSubTopic(null);
@@ -73,7 +111,11 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
     if (editingSubTopic) {
       await updateSubTopic(editingSubTopic.Id, data);
     } else {
-      await createSubTopic({ ...data, topic_id: topicId });
+      const maxOrder = orderedSubTopics.reduce(
+        (m, s) => (typeof s.Order === "number" && s.Order > m ? s.Order : m),
+        -1
+      );
+      await createSubTopic({ ...data, topic_id: topicId, Order: maxOrder + 1 });
     }
     refetchSubTopics();
   };
@@ -83,6 +125,73 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
       await deleteSubTopic(deletingSubTopic.Id);
       refetchSubTopics();
     }
+  };
+
+  const handleAttemptExit = () => {
+    if (isDirty) {
+      setPendingExitAction("toggleEdit");
+      setUnsavedDialogOpen(true);
+      return false;
+    }
+    return true;
+  };
+
+  const handleBack = () => {
+    if (editMode && isDirty) {
+      setPendingExitAction("back");
+      setUnsavedDialogOpen(true);
+      return;
+    }
+    onBack();
+  };
+
+  const handleConfirmExitDirty = () => {
+    cancel();
+    setUnsavedDialogOpen(false);
+    if (pendingExitAction === "toggleEdit") toggleEditMode();
+    else if (pendingExitAction === "back") onBack();
+    setPendingExitAction(null);
+  };
+
+  const handleCancelExitDirty = () => {
+    setUnsavedDialogOpen(false);
+    setPendingExitAction(null);
+  };
+
+  const renderCard = (st: SubTopic, dragHandle?: React.ReactNode) => {
+    const IconComponent = getIcon(st.icon);
+    return (
+      <ExpandableInfoCard
+        title={st.Title}
+        icon={<IconComponent />}
+        content={<SubTopicContent data={st.data} link={st.link} />}
+        expanded={expandedId === st.Id}
+        onChange={() =>
+          setExpandedId(expandedId === st.Id ? null : st.Id)
+        }
+        actions={
+          editMode ? (
+            <>
+              {dragHandle}
+              <IconButton
+                size="small"
+                onClick={() => handleEditSubTopic(st)}
+                sx={adminBtnSx}
+              >
+                <EditOutlined fontSize="small" />
+              </IconButton>
+              <IconButton
+                size="small"
+                onClick={() => handleDeleteSubTopic(st)}
+                sx={deleteBtnSx}
+              >
+                <DeleteOutlined fontSize="small" />
+              </IconButton>
+            </>
+          ) : undefined
+        }
+      />
+    );
   };
 
   return (
@@ -105,9 +214,9 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
             alignItems: "center",
           }}
         >
-          <EditModeToggle />
+          <EditModeToggle onAttemptExit={handleAttemptExit} />
           <Button
-            onClick={onBack}
+            onClick={handleBack}
             startIcon={<ArrowBackIcon sx={{ transform: "rotate(180deg)" }} />}
             sx={{
               color: "#6EA3FF",
@@ -131,22 +240,25 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
         </Typography>
 
         {editMode && (
-          <Button
-            onClick={handleAddSubTopic}
-            startIcon={<AddOutlined />}
-            sx={{
-              color: "#fff",
-              bgcolor: "#2449C6",
-              fontSize: { xs: "1rem", md: "1.2rem" },
-              fontWeight: 700,
-              borderRadius: "12px",
-              px: 3,
-              py: 1,
-              "&:hover": { bgcolor: "#1a3a9e" },
-            }}
-          >
-            הוספת תת-נושא חדש
-          </Button>
+          <Stack direction="row" spacing={2} alignItems="center" sx={{ flexWrap: "wrap", justifyContent: "center", gap: 1 }}>
+            <Button
+              onClick={handleAddSubTopic}
+              startIcon={<AddOutlined />}
+              sx={{
+                color: "#fff",
+                bgcolor: "#2449C6",
+                fontSize: { xs: "1rem", md: "1.2rem" },
+                fontWeight: 700,
+                borderRadius: "12px",
+                px: 3,
+                py: 1,
+                "&:hover": { bgcolor: "#1a3a9e" },
+              }}
+            >
+              הוספת תת-נושא חדש
+            </Button>
+            <ReorderToolbar isDirty={isDirty} saving={saving} onSave={save} onCancel={cancel} />
+          </Stack>
         )}
 
         {loading ? (
@@ -161,43 +273,26 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
           >
             שגיאה בטעינת הנתונים. נסו לרענן את הדף.
           </Typography>
+        ) : editMode ? (
+          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+            <SortableContext
+              items={orderedSubTopics.map((s) => s.Id)}
+              strategy={verticalListSortingStrategy}
+            >
+              <Stack spacing={2} sx={{ width: "100%", maxWidth: "1040px" }}>
+                {orderedSubTopics.map((st) => (
+                  <SortableSubTopicRow key={st.Id} id={st.Id}>
+                    {(handleProps) => renderCard(st, <SubTopicDragHandle {...handleProps} />)}
+                  </SortableSubTopicRow>
+                ))}
+              </Stack>
+            </SortableContext>
+          </DndContext>
         ) : (
           <Stack spacing={2} sx={{ width: "100%", maxWidth: "1040px" }}>
-            {subTopics.map((st) => {
-              const IconComponent = getIcon(st.icon);
-              return (
-                <ExpandableInfoCard
-                  key={st.Id}
-                  title={st.Title}
-                  icon={<IconComponent />}
-                  content={<SubTopicContent data={st.data} link={st.link} />}
-                  expanded={expandedId === st.Id}
-                  onChange={() =>
-                    setExpandedId(expandedId === st.Id ? null : st.Id)
-                  }
-                  actions={
-                    editMode ? (
-                      <>
-                        <IconButton
-                          size="small"
-                          onClick={() => handleEditSubTopic(st)}
-                          sx={adminBtnSx}
-                        >
-                          <EditOutlined fontSize="small" />
-                        </IconButton>
-                        <IconButton
-                          size="small"
-                          onClick={() => handleDeleteSubTopic(st)}
-                          sx={deleteBtnSx}
-                        >
-                          <DeleteOutlined fontSize="small" />
-                        </IconButton>
-                      </>
-                    ) : undefined
-                  }
-                />
-              );
-            })}
+            {orderedSubTopics.map((st) => (
+              <Box key={st.Id}>{renderCard(st)}</Box>
+            ))}
           </Stack>
         )}
       </Stack>
@@ -213,6 +308,11 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
         onClose={() => setDeleteDialogOpen(false)}
         onConfirm={handleConfirmDelete}
         itemName={deletingSubTopic?.Title ?? ""}
+      />
+      <UnsavedChangesDialog
+        open={unsavedDialogOpen}
+        onCancel={handleCancelExitDirty}
+        onConfirm={handleConfirmExitDirty}
       />
     </LandingLayout>
   );

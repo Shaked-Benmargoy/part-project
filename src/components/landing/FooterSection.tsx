@@ -1,4 +1,6 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import EditableLogo from "../admin/EditableLogo";
+
 const FooterSection = () => {
   return (
     <Stack alignItems="center" spacing={2}>
@@ -11,17 +13,12 @@ const FooterSection = () => {
         }}
       >זמינים עבורכם! טייסת מנהלה תל נוף</Typography>
 
-      <Box
-  component="img"
-  src="/sites/baha8-minhala/Shared%20Documents/logo2.png"
-  alt="logo2"
-  sx={{
-    width: 80,
-    height: 80,
-    borderRadius: "50%",
-    objectFit: "cover",
-  }}
-/>
+      <EditableLogo
+        src="/sites/baha8-minhala/Shared%20Documents/logo2.png"
+        alt="logo2"
+        filename="logo2.png"
+        sx={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover" }}
+      />
     </Stack>
   );
 };
