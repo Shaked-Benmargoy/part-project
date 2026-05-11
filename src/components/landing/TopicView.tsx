@@ -25,7 +25,7 @@ import SubTopicDialog from "../admin/SubTopicDialog";
 import DeleteConfirmDialog from "../admin/DeleteConfirmDialog";
 import ReorderToolbar from "../admin/ReorderToolbar";
 import UnsavedChangesDialog from "../admin/UnsavedChangesDialog";
-import SortableSubTopicRow, { SubTopicDragHandle } from "../admin/SortableSubTopicRow";
+import SortableSubTopicRow from "../admin/SortableSubTopicRow";
 import { useSubTopics } from "../../hooks/useSubTopics";
 import { useAdminContext } from "../../contexts/AdminContext";
 import { useReorderable, ReorderUpdate } from "../../hooks/useReorderable";
@@ -158,7 +158,7 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
     setPendingExitAction(null);
   };
 
-  const renderCard = (st: SubTopic, dragHandle?: React.ReactNode) => {
+  const renderCard = (st: SubTopic) => {
     const IconComponent = getIcon(st.icon);
     return (
       <ExpandableInfoCard
@@ -172,7 +172,6 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
         actions={
           editMode ? (
             <>
-              {dragHandle}
               <IconButton
                 size="small"
                 onClick={() => handleEditSubTopic(st)}
@@ -282,7 +281,7 @@ const TopicView = ({ topicId, topicTitle, onBack, refetchTopics }: TopicViewProp
               <Stack spacing={2} sx={{ width: "100%", maxWidth: "1040px" }}>
                 {orderedSubTopics.map((st) => (
                   <SortableSubTopicRow key={st.Id} id={st.Id}>
-                    {(handleProps) => renderCard(st, <SubTopicDragHandle {...handleProps} />)}
+                    {renderCard(st)}
                   </SortableSubTopicRow>
                 ))}
               </Stack>

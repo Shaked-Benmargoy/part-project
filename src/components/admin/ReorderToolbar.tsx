@@ -12,7 +12,7 @@ type ReorderToolbarProps = {
 const ReorderToolbar = ({ isDirty, saving, onSave, onCancel }: ReorderToolbarProps) => {
   if (!isDirty) return null;
   return (
-    <Stack direction="row" spacing={1} alignItems="center" sx={{ direction: "rtl" }}>
+    <Stack direction="row" spacing={1} alignItems="center">
       <Button
         onClick={onSave}
         disabled={saving}
